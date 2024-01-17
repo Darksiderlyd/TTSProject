@@ -8,7 +8,7 @@ from ttssrtvtt import batch_convert_vtt_to_srt
 
 
 def getSoundFileName(file_name) -> string:
-    return f"sounds/{file_name}.mp3"
+    return f"sounds/{file_name}.wav"
 
 
 def getSrtFileName(file_name) -> string:
@@ -18,7 +18,7 @@ def getSrtFileName(file_name) -> string:
 async def convert(text, file_name) -> None:
     start_time = time.time()
     communicate = edge_tts.Communicate(text, "zh-CN-YunxiNeural")
-    print(f"{file_name}: 开始生成{file_name}.mp3")
+    print(f"{file_name}: 开始生成{file_name}.wav")
     await communicate.save(getSoundFileName(file_name))
     print(f"{file_name}: 用时 {int(time.time() - start_time)}秒")
 
