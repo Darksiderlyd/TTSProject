@@ -11,9 +11,9 @@ VttDic = 'vtts'
 SrtDic = 'srts'
 
 
-# 读文件
-# 划分多少章
-# 按章写入文件
+# 读文件 DONE
+# 划分多少章 DONE
+# 按章写入文件 DONE
 # 对输出文件夹进行ttsfile 输出语音和字幕文件
 
 def getSingleArticleFile(file_name, multiFileName) -> string:
