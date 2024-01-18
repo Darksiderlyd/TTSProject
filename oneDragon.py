@@ -62,6 +62,8 @@ def amain():
                 # 加入任务列表
                 convertMultiArticalToSingle(text, file_name)
 
+    os.system('python ttsfileNoSrt.py')
+
 
 if __name__ == "__main__":
     amain()
