@@ -4,6 +4,7 @@ import time
 import edge_tts
 import os
 
+from submaker import SubMaker
 from ttssrtvtt import batch_convert_vtt_to_srt
 
 
@@ -24,7 +25,7 @@ async def convert(text, file_name) -> None:
 
     print(f"{file_name}: 开始读取语音文件生成{file_name}字幕")
     start_time_vtt = time.time()
-    subMaker = edge_tts.SubMaker()
+    subMaker = SubMaker()
     with open(getSoundFileName(file_name), "wb") as file:
         async for chunk in communicate.stream():
             if chunk["type"] == "audio":
@@ -36,7 +37,10 @@ async def convert(text, file_name) -> None:
         lines = subMaker.generate_subs().split('\n')
         for line in lines:
             file.write(line)
-    print(f"{file_name}: 全部处理完成，字幕生成用时 {int(time.time() - start_time_vtt)}秒  总用时 {int(time.time() - start_time)}秒")
+
+    print(
+        f"{file_name}: 全部处理完成，字幕生成用时 {int(time.time() - start_time_vtt)}秒  总用时 {int(time.time() - start_time)}秒")
+
 
 async def amain():
     # 创建输出文件夹
@@ -64,4 +68,8 @@ async def amain():
 
 
 if __name__ == "__main__":
-    amain()
+    loop = asyncio.get_event_loop_policy().get_event_loop()
+    try:
+        loop.run_until_complete(amain())
+    finally:
+        loop.close()

@@ -62,8 +62,6 @@ def amain():
                 # 加入任务列表
                 convertMultiArticalToSingle(text, file_name)
 
-    # batch_convert_vtt_to_srt(VttDic, SrtDic)
-
 
 if __name__ == "__main__":
     amain()
