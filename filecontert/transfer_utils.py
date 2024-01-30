@@ -15,26 +15,6 @@ epub_file_out_path = 'jiandie_out.epub'
 txt_file_out_path = 'jiandie_out.txt'
 
 
-def epub_to_mobi_with_kindlegen(epub_file_path, mobi_file_path):
-    try:
-
-        # 使用 KindleGen 命令进行 EPUB 到 MOBI 的转换
-        command = ['kindlegen', epub_file_path, '-o', mobi_file_path]
-
-        result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8')
-
-        # 输出命令执行结果
-        print("Exit Code:", result.returncode)
-        print("Standard Output:")
-        print(result.stdout)
-        print("Standard Error:")
-        print(result.stderr)
-
-        print("转换完成。")
-    except Exception as e:
-        print(f"发生错误: {str(e)}")
-
-
 def mobi_to_epub(mobi_file_path, epub_file_path):
     try:
         tempdir, filepath = extract2(mobi_file_path, epub_file_path)
@@ -71,8 +51,15 @@ def epub_to_txt(epub_file_path, txt_file_path):
         print(f"发生错误: {str(e)}")
 
 
+def epub_to_mobi(epub_file_path, mobi_file_path):
+    try:
+        subprocess.call(["ebook-convert", epub_file_path, mobi_file_path])
+    except Exception as e:
+        print(e)
+
+
 def test():
-    epub_to_mobi_with_kindlegen(epub_file_path, mobi_file_out_path)
+    txt_to_epub(txt_file_path, epub_file_out_path)
 
 
 if __name__ == "__main__":
