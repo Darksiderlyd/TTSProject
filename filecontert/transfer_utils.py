@@ -1,10 +1,8 @@
-import os
-
 from filecontert.extract2 import extract2
 from epub2txt import epub2txt
 import subprocess
 
-from filecontert.txt2epub2 import Txt2Epub2
+from filecontert.kindle.txt2epub2 import Txt2Epub2
 
 mobi_file_path = 'jiandie.mobi'
 epub_file_path = 'jiandie.epub'
