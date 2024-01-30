@@ -18,7 +18,9 @@ def getSrtFileName(file_name) -> string:
 
 async def convert(text, file_name) -> None:
     start_time = time.time()
-    communicate = edge_tts.Communicate(text, "zh-CN-YunxiNeural")
+    rate = '+10%'
+    volume = '+10%'
+    communicate = edge_tts.Communicate(text, "zh-CN-YunxiNeural", rate=rate, volume=volume)
     print(f"{file_name}: 开始生成{file_name}.wav")
     await communicate.save(getSoundFileName(file_name))
     print(f"{file_name}: 用时 {int(time.time() - start_time)}秒")
