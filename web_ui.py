@@ -91,12 +91,12 @@ if __name__ == "__main__":
     with gr.Blocks() as app:
         with gr.Row():
             with gr.Column():
-                input_dir = gr.Textbox(label="文本输入文件夹")
-                output_dir = gr.Textbox(label="语音输出文件夹")
+                input_dir = gr.Textbox(label="文本输入文件夹(可选)", value='texts')
+                output_dir = gr.Textbox(label="语音输出文件夹(可选)", value='sounds')
 
                 with gr.Row():
-                    slider_rate = gr.Slider(label="说话速度", minimum=0, maximum=100, step=1)
-                    slider_volume = gr.Slider(label="音量", minimum=0, maximum=100, step=1)
+                    slider_rate = gr.Slider(label="说话速度", minimum=0, maximum=100, value=20, step=1)
+                    slider_volume = gr.Slider(label="音量", minimum=0, maximum=100, value=20, step=1)
 
                 srt_dir = gr.Textbox(label="语音输出文件夹(可选)", value='srts')
 
