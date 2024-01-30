@@ -14,12 +14,14 @@ mobi_file_out_path = 'jiandie_out.mobi'
 epub_file_out_path = 'jiandie_out.epub'
 txt_file_out_path = 'jiandie_out.txt'
 
+
 def epub_to_mobi_with_kindlegen(epub_file_path, mobi_file_path):
     try:
 
         # 使用 KindleGen 命令进行 EPUB 到 MOBI 的转换
         command = ['kindlegen', epub_file_path, '-o', mobi_file_path]
-        result = subprocess.run(command, capture_output=True, text=True)
+
+        result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8')
 
         # 输出命令执行结果
         print("Exit Code:", result.returncode)
@@ -31,13 +33,6 @@ def epub_to_mobi_with_kindlegen(epub_file_path, mobi_file_path):
         print("转换完成。")
     except Exception as e:
         print(f"发生错误: {str(e)}")
-
-
-# 替换为实际的 EPUB 文件路径和要保存的 MOBI 文件路径
-epub_file_path = 'path/to/your/book.epub'
-mobi_file_path = 'path/to/save/book.mobi'
-
-epub_to_mobi_with_kindlegen(epub_file_path, mobi_file_path)
 
 
 def mobi_to_epub(mobi_file_path, epub_file_path):
