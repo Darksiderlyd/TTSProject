@@ -57,7 +57,8 @@ def epub_to_mobi(epub_file_path, mobi_file_path):
 
 
 def test():
-    txt_to_epub(txt_file_path, epub_file_out_path)
+    mobi_to_epub(mobi_file_path, epub_file_path)
+    epub_to_txt(epub_file_path, txt_file_out_path)
 
 
 if __name__ == "__main__":

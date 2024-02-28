@@ -21,7 +21,8 @@ def getSingleArticleFile(file_name, multiFileName) -> string:
 
 
 def splitMultiArtical(text, multiFileName) -> None:
-    split_regex = r'第[一二三四五六七八九十百千万亿零0-9]+章\s+[^\n]+'
+    split_regex = r'第[一二三四五六七八九十百千万亿零0-9]+章[^\n]+'
+    # split_regex = r'第[一二三四五六七八九十百千万亿零0-9]+章\s+[^\n]+'
 
     print(text)
 
